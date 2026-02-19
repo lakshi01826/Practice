@@ -1,0 +1,53 @@
+import java.util.Scanner;
+
+// Abstract class
+abstract class Notification {
+    abstract void send();
+}
+
+// Subclass 1
+class EmailNotification extends Notification {
+    void send() {
+        System.out.println("Email notification sent");
+    }
+}
+
+// Subclass 2
+class SMSNotification extends Notification {
+    void send() {
+        System.out.println("SMS notification sent");
+    }
+}
+
+// Subclass 3
+class PushNotification extends Notification {
+    void send() {
+        System.out.println("Push notification sent");
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String type = sc.nextLine();
+
+        Notification notification = null;
+
+        if (type.equals("Email")) {
+            notification = new EmailNotification();
+        } 
+        else if (type.equals("SMS")) {
+            notification = new SMSNotification();
+        } 
+        else if (type.equals("Push")) {
+            notification = new PushNotification();
+        }
+
+        if (notification != null) {
+            notification.send();
+        }
+
+        sc.close();
+    }
+}
